@@ -1,0 +1,29 @@
+.allButtons {
+  margin-left: 1000px;
+  margin-top: -30px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+.button {
+  width: 85px;
+  height: 30px;
+  background-color: white;
+  border: none;
+}
+.button3 {
+  background: #142683;
+  color: white;
+}
+.h1 {
+  margin-right: 100px;
+  border: 1px black solid;
+  color: #142683;
+}
+.body {
+  background-color: rgb(244, 248, 250);
+  padding-bottom: 239px;
+  padding-top: 2px;
+  margin-top: 10px;
+}

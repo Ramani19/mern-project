@@ -1,0 +1,16 @@
+.card {
+  width: 284px;
+}
+.card img {
+  width: 284px;
+  height: 192px;
+}
+.cards {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px 120px 0px 120px;
+}
+.body h1 {
+  margin: 30px 0px -20px 140px;
+  font-size: 30px;
+}
