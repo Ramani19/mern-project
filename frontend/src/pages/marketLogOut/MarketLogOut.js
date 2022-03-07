@@ -9,7 +9,9 @@ const MarketLogOut = () => {
     <div>
         <button onClick={() => {
             nav("../pages/dashboard/Dashboard")
-        }} className='button'>Login/Signup</button>
+        }} className='button'>Login</button>
+
+       <button> Signup</button>
       <BackRemove/>
     </div>
   )

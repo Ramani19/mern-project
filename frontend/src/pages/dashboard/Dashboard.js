@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 
-import React , {useState} from 'react'
-
+import React , {useState, useEffect} from 'react'
+import axios from 'axios'
 import ellipse from './Ellipse.svg'
 
 import './dashboard.css'
@@ -10,43 +10,46 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Dashboard = () => {
-  let navigate = useNavigate();
+ let navigate = useNavigate();
   const [userReg, setUserReg] = useState({
-      email : "",
-      password : ""
+    email : "",
+    password : ""
   });
 
   
   const handleInput = (e) => {
+    
        const name = e.target.name;
        const value = e.target.value;
        console.log(name, value);
        setUserReg({ ...userReg, [name]: value});
   }
-//fghjkl;lgyjhuikop
-  
-  // const PostData = async (e) => {
-  //   e.preventDefault();
+  useEffect(() => {
+
+    axios.get("http://localhost:5000/signin").then((response) => {
+      response.data
+  })
+  }, [])
+      
+
+
+  const PostData =  (e) => {
+    e.preventDefault();
 
     
-  //   const { email, password } = user;
 
-  //  const res = await fetch("/signup", {
-  //    method: "POST",
-  //    headers: {
-  //     "Content-Type": "application/json"
+    
+     axios.post("http://localhost:5000/signup", {
+        email:userReg.email,
+        password:userReg.password
+      
+      }).then(() => {
+        
+          navigate("../pages/dashLoggedIn/DashIn")
+    });
 
-  //    },
-  //    body : JSON.stringify({
-  //     email, password
-  //    })
-
-  //  })
-  //  const res = await res.json();
-
-  // }
-
-  
+   
+}
   return (
     <div className='dashboard'>
      
@@ -71,16 +74,14 @@ const Dashboard = () => {
       </p>  
       </div>
    </div>
-   <div className='form ' >
+   <div className='form ' onSubmit={PostData}>
      <div className='formInside'>
       <form method='post'>
         <h2>Login to your account</h2>
         
-         <input type="text" name='email' placeholder='Email Address' value={userReg.email} onChange={handleInput}  ></input><br/>
-         <input type="password" name="password" placeholder='Password' value = {userReg.password} onChange={handleInput}></input><br/>
-         <input type="submit" name="Login" value="login" onChange={handleInput} onClick={() => {
-           navigate("../pages/dashLoggedIn/DashIn")
-         }}></input>
+         <input type="text" name='email' placeholder='Email Address' value={userReg.email} onChange={(e)=>handleInput(e)}  ></input><br/>
+         <input type="password" name="password" placeholder='Password' value = {userReg.password} onChange={(e)=>handleInput(e)}></input><br/>
+         <input type="submit" name="Login" value="login"></input>
   
          
       </form>

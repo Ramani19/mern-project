@@ -15,4 +15,5 @@ const signUpTemplate = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("mytable", signUpTemplate);
+const userModel = mongoose.model("mytable", signUpTemplate);
+module.exports = userModel;

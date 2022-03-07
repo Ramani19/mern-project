@@ -1,14 +1,25 @@
-const { response } = require("express");
+//const  response = require("express");
 const express = require("express");
+const app = express();
 const router = express.Router();
 const signUpTemplateCopy = require("../utils/SignUpModels");
+app.use(express.json());
+router.get("/signin", (req, res) => {
+  signUpTemplateCopy.find({}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
 
-router.post("/signup", (request, response) => {
+router.post("/signup", async (request, response) => {
   const signedUpUser = new signUpTemplateCopy({
     email: request.body.email,
     password: request.body.password,
   });
-  signedUpUser
+  await signedUpUser
     .save()
     .then((data) => {
       response.json(data);
@@ -17,7 +28,5 @@ router.post("/signup", (request, response) => {
       response.json(error);
     });
 });
-
-router.get("/signin");
 
 module.exports = router;

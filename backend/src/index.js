@@ -1,12 +1,13 @@
 const express = require("express");
-const mongoose = require("mongoose");
-
-const dotenv = require("dotenv");
-const routesUrls = require("./routes/routes");
-const cors = require("cors");
-
-dotenv.config();
 const app = express();
+const mongoose = require("mongoose");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const userModel = require("./utils/SignUpModels");
+dotenv.config();
+
+app.use(express.json());
+app.use(cors());
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => {
@@ -15,14 +16,23 @@ mongoose
   .catch((err) => {
     console.log("error connecting to the database" + err);
   });
-
-/*something about app has to be written here*/
-// app.get("/hello-world", (req, res) => {
-//   res.send("hello  dear  world");
-// });
-app.use(express.json());
-app.use(cors());
-app.use("/app", routesUrls);
-app.listen(process.env.PORT, () => {
-  console.log("Backend server has started at " + process.env.PORT);
+app.get("/signin", (req, res) => {
+  userModel.find({}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
 });
+
+app.post("/signup", async (request, response) => {
+  const user = request.body;
+  const signedUpUser = new userModel(user);
+  await signedUpUser.save();
+  response.json(user);
+});
+
+ app.listen(process.env.PORT, () => {
+   console.log("Backend server has started at " + process.env.PORT);
+ });
