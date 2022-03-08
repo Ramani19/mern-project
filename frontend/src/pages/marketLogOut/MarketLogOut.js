@@ -1,18 +1,23 @@
 import React from 'react'
-import BackRemove from "../../components/backRemove/BackRemove"
-import { useNavigate } from 'react-router-dom'
+
+import  Button from '../../components/Button/Button'
 import "./marketLogOut.css"
+import ViewBGremove from '../../components/viewBGremove/ViewBGremove'
 
 const MarketLogOut = () => {
-    const nav = useNavigate();
+    
+    
+    
   return (
     <div>
-        <button onClick={() => {
-            nav("../pages/dashboard/Dashboard")
-        }} className='button'>Login</button>
 
-       <button> Signup</button>
-      <BackRemove/>
+      <div className='allButtons'>
+        <Button name='Login' path="../pages/dashboard/Dashboard" className="butt"/>
+        <Button name='Signup' path="../pages/dashboard/Dashboard"/>
+          </div>
+
+      <ViewBGremove/>
+       
     </div>
   )
 }

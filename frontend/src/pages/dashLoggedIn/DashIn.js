@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../../components/card/Card'
 import { useNavigate } from 'react-router-dom';
 
- import './dashIn.css'
+ import './dashIn.module.scss'
 
 
 const DashIn = () => {

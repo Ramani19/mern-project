@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -42,6 +41,7 @@
   "devDependencies": {
     "eslint": "^8.6.0",
     "eslint-plugin-react": "^7.28.0",
+    "node-sass": "^7.0.1",
     "prettier": "^2.5.1"
   }
 }

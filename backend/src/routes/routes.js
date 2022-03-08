@@ -1,18 +1,9 @@
 //const  response = require("express");
 const express = require("express");
 const app = express();
-const router = express.Router();
-const signUpTemplateCopy = require("../utils/SignUpModels");
-app.use(express.json());
-router.get("/signin", (req, res) => {
-  signUpTemplateCopy.find({}, (err, result) => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(result);
-    }
-  });
-});
+const mongoose = require("mongoose");
+
+
 
 router.post("/signup", async (request, response) => {
   const signedUpUser = new signUpTemplateCopy({

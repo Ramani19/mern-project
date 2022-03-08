@@ -33,6 +33,6 @@ app.post("/signup", async (request, response) => {
   response.json(user);
 });
 
- app.listen(process.env.PORT, () => {
-   console.log("Backend server has started at " + process.env.PORT);
- });
+app.listen(process.env.PORT, () => {
+  console.log("Backend server has started at " + process.env.PORT);
+});

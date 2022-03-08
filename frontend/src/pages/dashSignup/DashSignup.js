@@ -1,10 +1,14 @@
 import React from 'react'
-import 'dashSignup.css'
+import { useNavigate } from 'react-router-dom'
+import './dashSignup.css'
 
 const DashSignup = () => {
+    const navg2 = useNavigate();
   return (
     <div>
-      
+      <button onClick={() => {
+          navg2('../pages/dashboard/Dashboard')
+      }}>Signup</button>
     </div>
   )
 }

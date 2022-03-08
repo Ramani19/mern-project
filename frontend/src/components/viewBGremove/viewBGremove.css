@@ -1,0 +1,33 @@
+.banner {
+  display: flex;
+  align-items: center;
+}
+.blue .view {
+  width: 85px;
+  height: 30px;
+  border-radius: 4px;
+  border: none;
+  background-color: black;
+  color: white;
+}
+
+.blue {
+  height: 186px;
+  width: 1240px;
+  border: 1px black solid;
+  /* background-color: #c3e7fd; */
+  display: flex;
+  flex-direction: row;
+
+  float: right;
+}
+.banner .img {
+  height: 186px;
+  width: 294px;
+  border: 1px black solid;
+}
+.voilet {
+  width: 113px;
+  height: 186px;
+  background-color: #d3b4f6;
+}

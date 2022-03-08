@@ -1,5 +1,5 @@
 import React from "react";
-import card1 from "./card1.svg";
+import card1 from "../../images/card1.svg"
 
 import card2 from "./card2.jpeg";
 import card3 from "./card3.jpeg";

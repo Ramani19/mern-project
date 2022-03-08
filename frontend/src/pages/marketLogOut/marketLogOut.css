@@ -1,0 +1,10 @@
+.allButtons {
+  margin-left: 1100px;
+  margin-top: -30px;
+
+  display: flex;
+  justify-content: space-around;
+}
+.butt {
+  background-color: aqua;
+}
