@@ -1,8 +1,26 @@
-POST http://localhost:5000/app/signup
+POST http://localhost:3001/signup
+Content-Type: application/json
+
+{
+    
+   "userName":"fg",
+    "email":"dhopathiramani@gmail.com",
+    "password":"rt",
+    "cpassword":"rt"
+
+}
+###
+
+POST url HTTP/1.1
+header name: header value
+
+content http://localhost:3001/signin 
 Content-Type: application/json
 
 
 {
-    "email":"ram",
-    "password":"123"
+
+    "email":"hbnk",
+    "password":"keop"
+    
 }

@@ -7,17 +7,19 @@ import { useNavigate } from 'react-router-dom'
 // import RectVoilet from "./Rectangle Voilet.svg"
 
 const BackRemove = () => {
-  const navg5 = useNavigate();
+ const nav = useNavigate();
   return (
     
          
            
            <div className='blue'>
            <img src={card1}/>
-           <div className='violet'></div><div className='text'><h1>BACKGROUND IMAGE REMOVE</h1><p>100% automatic and free</p>
+            <div className='violet'></div>
+              
+              <div className='text'><h1>BACKGROUND IMAGE REMOVE</h1><p>100% automatic and free</p>
 </div>           <button className='view' onClick={() => {
-  navg5("../../pages/BGremove/BGremove")
-}}>View App</button>
+  nav("../../pages/BGremove/BGremove")
+}}>View App</button> 
            </div>
     
   )

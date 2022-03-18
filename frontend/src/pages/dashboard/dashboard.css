@@ -1,45 +1,12 @@
 .dashboard {
   margin: 0;
   padding: 0;
-}
-.firstflex {
-  width: 100%;
-  height: 86vh;
-  position: relative;
   display: flex;
-  box-sizing: border-box;
-}
-.textStroke {
-  width: 50%;
-  height: 100vh;
-  /* padding-top: 80px;
-  padding-left: 120px; */
 }
 
 .form {
   width: 50%;
   height: 86vh;
-}
-.textStroke {
-  float: left;
-  padding-left: -10px;
-  background-color: rgb(244, 248, 250);
-}
-.textStroke img {
-  width: 70px;
-  margin-left: -14px;
-  background-color: rgb(229, 234, 236);
-}
-.h1 {
-  margin-top: -5px;
-}
-.box {
-  width: 300px;
-  margin-left: 130px;
-  margin-top: 140px;
-  display: flex;
-  flex-direction: column;
-  padding-left: 10px;
 }
 .formInside {
   border: 1px solid rgb(128, 128, 131);

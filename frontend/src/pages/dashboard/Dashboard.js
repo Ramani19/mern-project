@@ -1,8 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 
-import React , {useState, useEffect} from 'react'
+import React , {useState} from 'react'
 import axios from 'axios'
-import ellipse from './Ellipse.svg'
+import Welcome from '../../components/welcome/Welcome';
+
 
 import './dashboard.css'
 import { useNavigate } from 'react-router-dom';
@@ -10,78 +11,80 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Dashboard = () => {
- let navigate = useNavigate();
+ let navigat = useNavigate();
+ let change
   const [userReg, setUserReg] = useState({
     email : "",
     password : ""
   });
+  const [error, setError] = useState("")
+ // console.log(error)
+  
 
   
-  const handleInput = (e) => {
-    
-       const name = e.target.name;
-       const value = e.target.value;
-       console.log(name, value);
-       setUserReg({ ...userReg, [name]: value});
+  function handleInput(e) {
+
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log(name, value);
+    setUserReg({ ...userReg, [name]: value });
   }
-  useEffect(() => {
-
-    axios.get("http://localhost:5000/signin").then((response) => {
-      response.data
-  })
-  }, [])
+const  authenticate = async (e) =>{
+  try{
+  e.preventDefault();
+   await axios.post("http://localhost:3001/signup/login" , {
+    email:userReg.email,
+    password:userReg.password,
+   }).then(() => {
+    
+      navigat("../pages/marketIn/MarketIn")
+      alert('hi')
+   }
+  
+  )}
+  catch(err) {
+     if(err.response && err.response.status >= 400 && err.response.status <= 500)
+       {
+         setError(err.response.data.message)
+         console.log(err)
+       }
+    } 
+  }
       
 
 
-  const PostData =  (e) => {
-    e.preventDefault();
+  // const PostData =  (e) => {
+  //   e.preventDefault();
 
     
 
     
-     axios.post("http://localhost:5000/signup", {
-        email:userReg.email,
-        password:userReg.password
+  //    axios.post("http://localhost:5000/signup", {
+  //       email:userReg.email,
+  //       password:userReg.password
       
-      }).then(() => {
+  //     }).then(() => {
         
-          navigate("../pages/dashLoggedIn/DashIn")
-    });
+  //         navigate("../pages/marketIn/MarketIn")
+  //   });
 
    
-}
+//}
   return (
     <div className='dashboard'>
      
-     
-    <div className='firstflex'>
+     <Welcome/>
     
-      
-    <div className='textStroke'>
-     <div className='box'>
   
-    
-      <img src={ellipse} className='stroke-logo'></img>
-      
-      
-      <h1>
-        Welcome to your Dashboard
-      </h1>
-      
-      <p className='para'>
-      
-      Your uploaded APIs will be displayed here once you login to here
-      </p>  
-      </div>
-   </div>
-   <div className='form ' onSubmit={PostData}>
+   <div className='form ' onSubmit={authenticate} >
      <div className='formInside'>
-      <form method='post'>
+      <form method='get' onSubmit={change}>
         <h2>Login to your account</h2>
         
          <input type="text" name='email' placeholder='Email Address' value={userReg.email} onChange={(e)=>handleInput(e)}  ></input><br/>
          <input type="password" name="password" placeholder='Password' value = {userReg.password} onChange={(e)=>handleInput(e)}></input><br/>
-         <input type="submit" name="Login" value="login"></input>
+         {error && <div className = 'errorColor'>{error}</div>}
+         <input type="submit" name="Login" value="login" ></input>
   
          
       </form>
@@ -89,7 +92,7 @@ const Dashboard = () => {
       </div>
       
     </div>
-    </div>
+    
     
   )
 }
