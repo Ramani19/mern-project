@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+
 const express = require("express");
 const app = express();
 const FormData = require("form-data");
@@ -8,8 +9,9 @@ const axios = require("axios");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const userModel = require("./utils/SignUpModels");
+const APImodel = require("./utils/addAPImodel");
 //const { response } = require("express");
 const bodyParser = require("body-parser");
 dotenv.config();
@@ -30,55 +32,87 @@ mongoose
 
 app.post("/signup", async (request, response) => {
   const email = request.body.email;
-  await userModel.findOne({ email }).then((use) => {
+ const use =  await userModel.findOne({ email })
     if (use) {
-      return response.status(400).json({ message: "user alresdy exists" });
-    } else {
-      const hashedPassword = bcrypt.hash(request.body.password, 10);
+       response.status(400).json({ message: "user already exists" });
+    }
+    
+    else {
+      
       const user = {
         userName: request.body.userName,
         email: request.body.email,
 
-        password: hashedPassword,
-        cpassword: hashedPassword,
+        password: request.body.password,
+        cpassword:request.body.cpassword ,
       };
       console.log(user);
       const signedUpUser = new userModel(user);
-      signedUpUser.save();
+      const hashed = await bcrypt.hash(request.body.password,10)
+      if(hashed)
+      {
+        user.password = hashed
+        user.cpassword = hashed
+        console.log('hashed',hashed)
+      }
+      console.log(user.password)
+
+
+      await signedUpUser.save();
+      console.log(user.password)
       response.status(201).json(user);
       console.log(user);
     }
   });
-});
-app.post("/signup/login", async (request, response) => {
 
-  const email = request.body.email;
+app.post("/signup/login", (request, response) => {
+
+  const {email,password} = request.body;
   //console.log( request.body)
-  await userModel.findOne({ email }).then((use) => {
-    if (!use) {
-      console.log(response.status(400).json({ message: "cannot find user" }));
-      return response.status(400).json({ message: "cannot find user" });
-    }
-    try {
-      bcrypt.compare(request.body.password, use.password).then((isMatch) => {
-        if (isMatch) return response.status(201).send();
-        else {
-          return response
-            .status(403)
-            .send({ message: "enter correct password" });
-        }
-      });
-    } catch {
-      response.status(500).send;
-    }
-  });
-});
-// http.createServer(onRequest).listen(9000, "192.168.119.119");
-app.post("/upload", (req, res) => {
-  const image = req.file.buffer
-  
+    userModel.findOne({email},async function(err, found ){
+      console.log(err)
+      
+      console.log(password)
+    
+      if(!err){
+            if(!found)
+            {
+        console.log('hi')
+        response.status(401).json({message :'user is not registered'})
+            }
+            else{
+              console.log(found)
+        //const compare= await bcrypt.compare(password,found.password)
+        //console.log(compare)
+            if(password!=found.password)
+             {
+              response.status(403).json({message:'incorrect password'})
+             }
+             else{
+              response.status(200).json(found)
+             }
+            }
 
-  // const imageData = image.substring(image.indexOf(",") + 1);
+         
+    }
+    
+    else{
+     console.log(err)
+    }  
+      })
+   
+   
+   
+    
+    })
+
+
+app.post("/upload", (req, res) => {
+  console.log(req.body)
+  const  image  = req.body.sending
+  console.log(req.body)
+
+  
   const formDa = new FormData();
   formDa.append("size", "auto");
  
@@ -87,10 +121,10 @@ app.post("/upload", (req, res) => {
     method: "post",
     url: "https://api.remove.bg/v1.0/removebg",
     data: formDa,
-    responseType: "arraybuffer",
+   //responseType: "arraybuffer",
     headers: {
       ...formDa.getHeaders(),
-      "X-Api-Key": "6h1jcLkh6emDQEvJP4UNtXCT",
+      "X-Api-Key": "arHHviRtutxFQoWfxaWxzEZJ",
       Accept: "application/json",
     },
     encoding: null,
@@ -100,8 +134,6 @@ app.post("/upload", (req, res) => {
         return console.error("Error:", response.status, response.statusText);
          console.log(response.data)
         res.json(response.data);
-
-      
     })
     .catch((error) => {
       return console.error("Request failed:", error);
@@ -115,6 +147,44 @@ app.post("/upload", (req, res) => {
   //   return console.error("Request Failed" + error);
   // });
 });
+
+app.post("/addAPI",async (req,res) => {
+  const {name,endpoint,description} = req.body
+  const apiCheck = await APImodel.findOne({name})
+  if (apiCheck) {
+    res.status(400).json({ message: "api already exists" });
+ } 
+ else{
+   const api = {name,endpoint,description}
+   const addAPI = new APImodel(api);
+   await addAPI.save();
+   res.status(201).json(api);
+   console.log(api);
+ 
+}})
+
+
 app.listen(process.env.PORT, () => {
   console.log("Backend server has started at " + process.env.PORT);
 });
+
+
+
+
+
+
+
+
+// if(user)
+//    {
+//      response.send().json({me:'k'})
+//    }
+//    else{
+//      const compare= bcrypt.compare(password,user.password)
+//      if(compare)
+//      {
+//       response.send().json({me:'incorrect password'})
+//      }
+//      else{
+//       response.send().json({me:'valid'})
+//      }

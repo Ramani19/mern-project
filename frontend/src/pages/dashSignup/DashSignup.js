@@ -13,7 +13,7 @@ const DashSignup = () => {
     cpassword: "",
   });
   const [er, setEr] = useState("");
- 
+  const [userRegp, setUserRegp] = useState(null)
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -21,7 +21,22 @@ const DashSignup = () => {
     console.log(name, value);
     setUserReg({ ...userReg, [name]: value });
   };
-  
+  const handlePassword = (e) => {
+    const name =  e.target.name;
+    const value = e.target.value;
+    setUserReg({ ...userReg, [name]: value });
+     if(userReg.password!=value)
+     {
+      
+     setUserRegp('Passwords doesnot match');
+     }
+     else{
+    
+    setUserRegp(null)
+     }
+  }
+ 
+
   const PostDat = async (e) => {
     try {
       e.preventDefault();
@@ -35,7 +50,7 @@ const DashSignup = () => {
         })
         .then(() => {
           navgrt("../pages/marketIn/MarketIn");
-          alert("user created");
+        
         });
     } catch (err) {
       if (
@@ -47,7 +62,6 @@ const DashSignup = () => {
         console.log(er);
 
         setEr(err.response.data.message);
-        
       }
     }
   };
@@ -56,16 +70,18 @@ const DashSignup = () => {
       <Welcome />
 
       <div className="signupForm">
-        <form method="post" onSubmit={PostDat}>
+        <form method="post" onSubmit={(e)=>{
+          console.log(userRegp)
+          if(userRegp==null)
+          PostDat(e)
+          else
+          console.log('hi')
+    
+          
+             }}>
           <h2>Create your account</h2>
-          {er && (
-            <div
-              className="er
-Color"
-            >
-              {er}
-            </div>
-          )}
+         
+          
           <input
             type="text"
             name="userName"
@@ -93,10 +109,21 @@ Color"
             type="password"
             name="cpassword"
             value={userReg.cpassword}
-            onChange={(e) => handleInput(e)}
+            onChange={((e) => handlePassword(e)
+              )}
             placeholder="Confirm Password"
           ></input>
+
           <br />
+         
+          {er ?
+            <div
+              className="errorColor"
+            >
+              {er}
+            </div>: <div className="errorColor">{userRegp}</div>}
+            <div className="register"> already have an account?<a href='../dashboard/Dashboard'>Login</a></div>
+
           <input type="submit" name="Signup" value="Signup"></input>
         </form>
       </div>

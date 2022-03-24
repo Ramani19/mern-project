@@ -8,13 +8,13 @@ const ThreeButtons = () => {
   return (
     
       <div className='allButtons'>
-        <button className='button'>
+        <button className='buttonThree'>
           My APIs
         </button>
-        <button className='button '>
+        <button className='buttonThree '>
           My Account
         </button>
-        <button className='button button3' onClick={() => {
+        <button className='buttonThree button3' onClick={() => {
            navg5("../pages/addAPI/AddAPI")
          }}>
         +New API

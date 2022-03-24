@@ -4,13 +4,18 @@
   padding-right: 604px;
   padding-bottom: 154px;
   background-color: #566474cc;
+  height: 600px;
+  width: 932px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .formIn {
   background-color: white;
   padding: 20px 30px 100px 30px;
   margin-left: 610px;
-  margin-top: 190px;
+  margin-top: 180px;
 }
 .formIn input {
   width: 250px;

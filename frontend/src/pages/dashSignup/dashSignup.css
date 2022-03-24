@@ -43,5 +43,13 @@ input[type="submit"] :hover {
   width: 75px;
 }
 .errorColor {
-  border: 1px black solid;
+  /* border: 1px black solid; */
+  color: rgb(245, 43, 43);
+  margin-left: 20px;
+}
+.register {
+  margin-left: 20px;
+}
+.register a {
+  text-decoration: none;
 }

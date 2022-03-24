@@ -11,7 +11,7 @@ import BGremove from './pages/BGremove/BGremove'
 
 import {BrowserRouter as Router ,Routes,Route} from 'react-router-dom';
  import logo from './logo.svg';
-import './app.css'
+import './App.css'
 
 function App (){
   return (
@@ -43,7 +43,9 @@ function App (){
         <Route path='pages/dashSignup/DashSignup' element={<DashSignup/>}/>
         <Route path="pages/dashboard/Dashboard/" element={<Dashboard/>}/>
         <Route path="pages/marketIn/MarketIN/" element={<MarketIn/>}/>
-            <Route path="pages/dashLoggedIn/DashIn" element={<DashIn/>}/>
+           
+        <Route path="pages/dashLoggedIn/DashIn" element={<DashIn/>}/>
+        
             <Route path="components/Button/Button" element={<Button/>}/>
 
             <Route path="pages/addAPI/AddAPI" element={<AddAPI/>}/>

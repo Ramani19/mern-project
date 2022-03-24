@@ -14,7 +14,7 @@
   width: 300px;
   margin-top: 150px;
   margin-left: 100px;
-  height: 220px;
+  height: 235px;
   border-radius: 10px;
 }
 h2 {
@@ -40,4 +40,7 @@ h2 {
 }
 input[type="submit"] :hover {
   width: 75px;
+}
+.erColor {
+  color: rgb(248, 52, 52);
 }

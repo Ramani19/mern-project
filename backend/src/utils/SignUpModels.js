@@ -1,4 +1,6 @@
+/* eslint-disable prettier/prettier */
 const mongoose = require("mongoose");
+const bct = require("bcryptjs");
 
 const signUpTemplate = new mongoose.Schema({
   userName: {
@@ -11,17 +13,20 @@ const signUpTemplate = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
   },
   cpassword: {
     type: String,
-    required: true,
   },
   date: {
     type: Date,
     default: Date.now,
   },
 });
+
+   
+  
+  
+ 
 
 const userModel = mongoose.model("mytable", signUpTemplate);
 module.exports = userModel;

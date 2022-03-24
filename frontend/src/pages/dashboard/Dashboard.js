@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
  let navigat = useNavigate();
- let change
+ 
   const [userReg, setUserReg] = useState({
     email : "",
     password : ""
@@ -38,7 +38,7 @@ const  authenticate = async (e) =>{
    }).then(() => {
     
       navigat("../pages/marketIn/MarketIn")
-      alert('hi')
+    
    }
   
   )}
@@ -48,8 +48,10 @@ const  authenticate = async (e) =>{
          setError(err.response.data.message)
          console.log(err)
        }
-    } 
+    }
+    console.log(error) 
   }
+  
       
 
 
@@ -76,15 +78,19 @@ const  authenticate = async (e) =>{
      <Welcome/>
     
   
-   <div className='form ' onSubmit={authenticate} >
+   <div className='form ' >
      <div className='formInside'>
-      <form method='get' onSubmit={change}>
+      <form method='post' onSubmit={(e)=>{authenticate(e)
+  }} >
         <h2>Login to your account</h2>
         
          <input type="text" name='email' placeholder='Email Address' value={userReg.email} onChange={(e)=>handleInput(e)}  ></input><br/>
          <input type="password" name="password" placeholder='Password' value = {userReg.password} onChange={(e)=>handleInput(e)}></input><br/>
-         {error && <div className = 'errorColor'>{error}</div>}
+         {error && <div className = 'erColor'>{error}</div>}
+        <div> not a user?<a href='../dashSignUp/DashSignUp'>Register</a></div>
          <input type="submit" name="Login" value="login" ></input>
+
+         
   
          
       </form>

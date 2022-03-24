@@ -9,8 +9,10 @@ import upload from "../../images/upload.svg";
 const BGremove = () => {
   const [img, setImg] = useState(null);
   const [prev, setPrev] = useState(null);
- const [base64, setBase64] = useState();
+  const [base64, setBase64] = useState();
+  const [back, setBack] = useState();
   const inputRef = useRef();
+  const refer = useRef();
 
   useEffect(() => {
     if (img) {
@@ -18,59 +20,52 @@ const BGremove = () => {
       fileReader.onloadend = () => {
         setPrev(fileReader.result);
       };
-     
-     fileReader.readAsDataURL(img)
-     
 
-     
+      fileReader.readAsDataURL(img);
     } else {
       setPrev(null);
     }
   }, [img]);
-  const formData = new FormData()
+  const formData = new FormData();
 
- 
-  //const uploadImage = async (e) => {
-  //e.preventDefault()
-  // console.log(inputRef.current.click())
-  // console.log(inputRef.current.files[0])
-  //  const files = e.target.current.files[0]
-  //  setImg(files)
-  //  const fileReader1 = new FileReader();
-  //    const image = fileReader1.readAsDataURL(files);
-  
-  // const baseImg = await convertBase64(files)
-  // setBase64(baseImg)
-  //const image = req.body.image;
-
-  // const imageData = image.substring(image.indexOf(",") + 1);
   const uploadImage = async (files) => {
-    const a =await convertBase64(files)
+    const a = await convertBase64(files);
     const imageData = a.substring(a.indexOf(",") + 1);
-    formData.append('file',imageData)
-    console.log(imageData)
-    setBase64(a)
-  }
+    formData.append("file", imageData);
+    
+    setBase64(a);
+
+    const send = formData.get("file");
+    console.log(send)
+    
+    axios
+      .post("http://localhost:3001/upload", { sending: send })
+      .then(async (res) => {
+        const x = res.data.data.result_b64;
+        
+        await setBack(`data:image/jpeg/png/jpg/svg;base64,${x}`);
+        console.log(back);
+
+        setPrev(null);
+      });
+  };
 
   const convertBase64 = (files) => {
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject) => {
       const fileRead = new FileReader();
       fileRead.readAsDataURL(files);
-      fileRead.onload = ()=>{
+      fileRead.onload = () => {
         resolve(fileRead.result);
       };
       fileRead.onerror = (e) => {
-        reject(e)
-      }
-    })
-
-  }
-  const submitData = () => {
-    axios.post("http://localhost:3001/upload",{formData})
-  }
- 
-   
-   
+        reject(e);
+      };
+    });
+  };
+  
+  
+  const abc =  prev ? prev : back ;
+  
 
   return (
     <div className="total">
@@ -83,54 +78,89 @@ const BGremove = () => {
       </div>
       <div className="upload">
         <div className="uploadInside">
-          {prev ? (
+          {img ? (
             <div className="afterPreview">
-              <img src={prev} className="image" />
-              <button
-                onClick={() => {
-                  //setImg(null);
-                  submitData();
- 
-                }}
-              >
-                clear image
-              </button>
-            </div>
+              <img src={abc} className="image" />
+              <button className="bgButton" onClick={() => { setImg(null)}}>clear image</button>
+             { back && <a href={abc} className='bgButton' download= 'image.png'>download image</a> }    </div>
           ) : (
             <div className="beforePreview">
-           <div className="beforeInside">
-              <img src={upload} />
-              <p>File should be png,jpg and less than 5mb</p>
-              <input type="file" accept="image/*"
-                ref={inputRef}
-                style={{ display: " none " }}
-                onChange={(e) => {
-                  const files = e.target.files[0];
-                  if (files) {
-                    setImg(files);
-                  } else {
-                    setImg(null);
-                  }
-                  uploadImage(files)
-                 
-                }
-               }
-              />
-              <button
-                onClick={async (e) => {
-                  e.preventDefault();
-                  inputRef.current.click();
-                  
-                  
-                }}
-              >
-                upload
-              </button>
-            </div>
+              <div className="beforeInside">
+                <img src={upload} />
+                <p>File should be png,jpg and less than 5mb</p>
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={inputRef}
+                  style={{ display: " none " }}
+                  onChange={(e) => {
+                    const files = e.target.files[0];
+                    if (files) {
+                      setImg(files);
+                    } else {
+                      setImg(null);
+                    }
+                    uploadImage(files);
+                  }}
+                />
+                <button className="bgButton"
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    inputRef.current.click();
+                  }}
+                >
+                  upload
+                </button>
+              </div>
             </div>
           )}
 
-          
+          {/* {
+            (back
+             ? (
+              <div className="afterPreview">
+                <img src={back} className="image" />
+                <button
+                  onClick={() => {
+                    //setImg(null);
+                    submitData();
+                  }}
+                >
+                  download image
+                </button>
+              </div>
+            ) : (
+              <div className="beforePreview">
+                <div className="beforeInside">
+                  <img src={upload} />
+                  <p>File should be png,jpg and less than 5mb</p>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    ref={inputRef}
+                    style={{ display: " none " }}
+                    onChange={(e) => {
+                      const files = e.target.files[0];
+                      if (files) {
+                        setImg(files);
+                      } else {
+                        setImg(null);
+                      }
+                      uploadImage(files);
+                    }}
+                  />
+                  <button
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      inputRef.current.click();
+                    }}
+                  >
+                    upload
+                  </button>
+                </div>
+              </div>
+            ))
+          } */}
         </div>
       </div>
     </div>
@@ -138,8 +168,4 @@ const BGremove = () => {
 };
 
 export default BGremove;
-{
-  /* <button onClick={() => {
-             setImg(null)
-           } }>clear image</button><button onClick={remove}>remove background</button></> */
-}
+

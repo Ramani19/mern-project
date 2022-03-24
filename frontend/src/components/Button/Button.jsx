@@ -10,7 +10,7 @@ const ButtonHere = (props) => {
   return (
    
     <div>
-      <button className="button" onClick={()=>{navg9(props.path)}}
+      <button className="buttons" onClick={()=>{navg9(props.path)}}
       >{props.name}</button> 
     </div>
   )
