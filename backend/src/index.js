@@ -124,7 +124,7 @@ app.post("/upload", (req, res) => {
    //responseType: "arraybuffer",
     headers: {
       ...formDa.getHeaders(),
-      "X-Api-Key": "arHHviRtutxFQoWfxaWxzEZJ",
+      "X-Api-Key": process.env.KEY,
       Accept: "application/json",
     },
     encoding: null,

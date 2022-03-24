@@ -9,10 +9,11 @@ const MarketIn = () => {
     <div>
       <ThreeButtons/>
       <ViewBGremove/>
-      <h1 className='movement'>
+      <div className='movement'>
+      <h1 >
         All APIs
       </h1>
-    
+      </div>
       <Card/>
     </div>
   )

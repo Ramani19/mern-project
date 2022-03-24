@@ -84,14 +84,14 @@ const DashSignup = () => {
           
           <input
             type="text"
-            name="userName"
+           required name="userName"
             value={userReg.userName}
             onChange={(e) => handleInput(e)}
             placeholder="User Name"
           ></input>
           <input
             type="text"
-            name="email"
+           required name="email"
             value={userReg.email}
             onChange={(e) => handleInput(e)}
             placeholder="Email Address"
@@ -99,7 +99,7 @@ const DashSignup = () => {
           <br />
           <input
             type="password"
-            name="password"
+           required name="password"
             value={userReg.password}
             onChange={(e) => handleInput(e)}
             placeholder="Password"
@@ -107,7 +107,7 @@ const DashSignup = () => {
           <br />
           <input
             type="password"
-            name="cpassword"
+           required name="cpassword"
             value={userReg.cpassword}
             onChange={((e) => handlePassword(e)
               )}

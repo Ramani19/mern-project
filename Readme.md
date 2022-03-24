@@ -3,10 +3,11 @@
 ## Getting Started
 
 This project requires the following software to be intstalled on your system
+
 1. NodeJS / NPM - [https://nodejs.org/en/](https://nodejs.org/en/)
 2. Git - [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
-### Getting a copy of this starter 
+### Getting a copy of this starter
 
 You can simply fork this folder to start working on it.
 
@@ -31,4 +32,3 @@ frontend
         utils -> create and store utilities here
 
 ```
-

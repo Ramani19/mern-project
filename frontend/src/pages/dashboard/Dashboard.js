@@ -84,8 +84,8 @@ const  authenticate = async (e) =>{
   }} >
         <h2>Login to your account</h2>
         
-         <input type="text" name='email' placeholder='Email Address' value={userReg.email} onChange={(e)=>handleInput(e)}  ></input><br/>
-         <input type="password" name="password" placeholder='Password' value = {userReg.password} onChange={(e)=>handleInput(e)}></input><br/>
+         <input type="text" name='email' placeholder='Email Address' value={userReg.email} onChange={(e)=>handleInput(e)} required ></input><br/>
+         <input type="password" name="password" placeholder='Password' value = {userReg.password} onChange={(e)=>handleInput(e)} required></input><br/>
          {error && <div className = 'erColor'>{error}</div>}
         <div> not a user?<a href='../dashSignUp/DashSignUp'>Register</a></div>
          <input type="submit" name="Login" value="login" ></input>
