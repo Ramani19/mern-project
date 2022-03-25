@@ -39,7 +39,7 @@ const BGremove = () => {
     console.log(send)
     
     axios
-      .post("http://localhost:3001/upload", { sending: send })
+      .post("https://ramani-app.herokuapp.com/upload", { sending: send })
       .then(async (res) => {
         const x = res.data.data.result_b64;
         

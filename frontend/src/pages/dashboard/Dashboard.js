@@ -32,7 +32,7 @@ const Dashboard = () => {
 const  authenticate = async (e) =>{
   try{
   e.preventDefault();
-   await axios.post("http://localhost:3001/signup/login" , {
+   await axios.post("https://ramani-app.herokuapp.com/signup/login" , {
     email:userReg.email,
     password:userReg.password,
    }).then(() => {

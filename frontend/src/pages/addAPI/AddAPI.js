@@ -24,7 +24,7 @@ const AddAPI = () => {
 
 const submitHandler = (e) => {
   e.preventDefault()
-  axios.post("http://localhost:3001/addAPI",{
+  axios.post("https://ramani-app.herokuapp.com/addAPI",{
     name : API.name,
     endpoint : API.endpoint,
     description : API.description,

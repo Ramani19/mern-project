@@ -42,7 +42,7 @@ const DashSignup = () => {
       e.preventDefault();
 
       await axios
-        .post("http://localhost:3001/signup", {
+        .post("https://ramani-app.herokuapp.com/signup", {
           userName: userReg.userName,
           email: userReg.email,
           password: userReg.password,
