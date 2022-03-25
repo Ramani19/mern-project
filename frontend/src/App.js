@@ -11,7 +11,7 @@ import BGremove from './pages/BGremove/BGremove'
 
 import {BrowserRouter as Router ,Routes,Route} from 'react-router-dom';
  import logo from './logo.svg';
-//import './App.css'
+import './App.css'
 
 function App (){
   return (
