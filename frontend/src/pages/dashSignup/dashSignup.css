@@ -1,12 +1,18 @@
-.dashup {
-  margin: 0px;
-  display: flex;
-}
+
 .form {
-  width: 50%;
+  /* border: 1px solid; */
+ 
   height: 86vh;
+ 
+}
+.form-right{
+  /* border: 1px solid; */
+  height: 86vh;
+  width: 50%;
+  float: right;
 }
 .signupForm {
+
   border: 1px solid rgb(128, 128, 131);
   padding: 30px 30px 120px 30px;
   width: 300px;
@@ -50,6 +56,8 @@ input[type="submit"] :hover {
 .register {
   margin-left: 20px;
 }
-.register a {
-  text-decoration: none;
+.register button {
+ background:none;
+ border: none;
+ color: #142683;
 }

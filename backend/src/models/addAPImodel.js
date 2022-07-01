@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
+const SignUpModels = require("./SignUpModels")
 const APIschema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: SignUpModels,
+  },
   name: {
     type: String,
     required: true,

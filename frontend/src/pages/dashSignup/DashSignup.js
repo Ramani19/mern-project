@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Welcome from "../../components/welcome/Welcome";
 import axios from "axios";
 import "./dashSignup.css";
 
-const DashSignup = () => {
+const DashSignup =({style, event}) => {
   const navgrt = useNavigate();
   const [userReg, setUserReg] = useState({
     userName: "",
@@ -41,14 +43,18 @@ const DashSignup = () => {
     try {
       e.preventDefault();
 
-      await axios
-        .post("https://ramani-app.herokuapp.com/signup", {
+      await axios.post("http://localhost:3001/signup", {
+          // headers: {
+          //   'Access-Control-Allow-Origin': true,
+          // },
           userName: userReg.userName,
           email: userReg.email,
           password: userReg.password,
           cpassword: userReg.cpassword,
         })
         .then(() => {
+          localStorage.setItem('email' , userReg.email)
+    localStorage.setItem('password' , userReg.password)
           navgrt("../pages/marketIn/MarketIn");
         
         });
@@ -66,20 +72,17 @@ const DashSignup = () => {
     }
   };
   return (
-    <div className="dashup">
+    <div className='form'>
       <Welcome />
+      <div className="form-right">
+      <div className="signupForm" >
+      <h2>Create your account</h2>
+        <form method="post" onSubmit={(e) => {
+                if(userRegp==null)
+                PostDat(e)
 
-      <div className="signupForm">
-        <form method="post" onSubmit={(e)=>{
-          console.log(userRegp)
-          if(userRegp==null)
-          PostDat(e)
-          else
-          console.log('hi')
-    
-          
-             }}>
-          <h2>Create your account</h2>
+        }}
+          >
          
           
           <input
@@ -122,13 +125,15 @@ const DashSignup = () => {
             >
               {er}
             </div>: <div className="errorColor">{userRegp}</div>}
-            <div className="register"> already have an account?<a href='../dashboard/Dashboard'>Login</a></div>
+            <div className="register"> already have an account?<button onClick ={event}>Login</button></div>
 
           <input type="submit" name="Signup" value="Signup"></input>
         </form>
       </div>
+      </div>
     </div>
-  );
-};
+  )
+          }
+
 
 export default DashSignup;

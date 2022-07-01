@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 
 import React , {useState} from 'react'
@@ -10,7 +11,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Dashboard = () => {
+// eslint-disable-next-line no-unused-vars
+const Dashboard = ({style1,event}) => {
  let navigat = useNavigate();
  
   const [userReg, setUserReg] = useState({
@@ -32,11 +34,12 @@ const Dashboard = () => {
 const  authenticate = async (e) =>{
   try{
   e.preventDefault();
-   await axios.post("https://ramani-app.herokuapp.com/signup/login" , {
+   await axios.post("http://localhost:3001/signup/login" , {
     email:userReg.email,
     password:userReg.password,
    }).then(() => {
-    
+    localStorage.setItem('email' , userReg.email)
+    localStorage.setItem('password' , userReg.password)
       navigat("../pages/marketIn/MarketIn")
     
    }
@@ -78,7 +81,7 @@ const  authenticate = async (e) =>{
      <Welcome/>
     
   
-   <div className='form ' >
+   <div className='form-here ' >
      <div className='formInside'>
       <form method='post' onSubmit={(e)=>{authenticate(e)
   }} >
@@ -87,7 +90,7 @@ const  authenticate = async (e) =>{
          <input type="text" name='email' placeholder='Email Address' value={userReg.email} onChange={(e)=>handleInput(e)} required ></input><br/>
          <input type="password" name="password" placeholder='Password' value = {userReg.password} onChange={(e)=>handleInput(e)} required></input><br/>
          {error && <div className = 'erColor'>{error}</div>}
-        <div> not a user?<a href='../dashSignUp/DashSignUp'>Register</a></div>
+        <div> not a user?<button onClick={event}>Register</button></div>
          <input type="submit" name="Login" value="login" ></input>
 
          

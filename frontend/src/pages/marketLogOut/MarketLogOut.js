@@ -14,9 +14,9 @@ const MarketLogOut = () => {
 
       <div className='allButtons'>
         <Button name='Login' path="../pages/dashboard/Dashboard"/>
-        <Button name='Signup' path="../pages/dashSignup/DashSignup"/>
+        <Button name='Signup' path="../pages/DashSignup/DashSignup"/>
           </div>
-            <div>
+          <div>
       <ViewBGremove/>
       </div>
       <h1 className='textAPI'>

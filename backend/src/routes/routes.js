@@ -1,23 +1,20 @@
+/* eslint-disable prettier/prettier */
 //const  response = require("express");
 const express = require("express");
-const app = express();
-const mongoose = require("mongoose");
+const user = require("../controllers/User");
+const api = require("../controllers/api")
+const router = express.Router();
 
 
+//user routes
+router.route("/signup", user.signup);
+router.route("/signup/login", user.login);
 
-router.post("/signup", async (request, response) => {
-  const signedUpUser = new signUpTemplateCopy({
-    email: request.body.email,
-    password: request.body.password,
-  });
-  await signedUpUser
-    .save()
-    .then((data) => {
-      response.json(data);
-    })
-    .catch((error) => {
-      response.json(error);
-    });
-});
+//api routes
+ 
+router.route("/upload",api.upload)
+router.route("/addAPI",api.addAPI)
+router.route("/findAPI",api.findAPI)
+router.route("/findSpecificAPI",api.findSpecificAPI)
 
 module.exports = router;

@@ -8,7 +8,9 @@ const ThreeButtons = () => {
   return (
     
       <div className='allButtons'>
-        <button className='buttonThree'>
+        <button className='buttonThree' onClick={() => {
+          navg5("/myapis")
+        }}>
           My APIs
         </button>
         <button className='buttonThree '>

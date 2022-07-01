@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from 'axios'
 import React,{useState} from 'react'
 import DashIn from '../dashLoggedIn/DashIn'
@@ -5,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 import './addAPI.css'
+
 
 const AddAPI = () => {
        
@@ -22,24 +24,22 @@ const AddAPI = () => {
     setAPI({ ...API, [name]: value });
    }
 
-const submitHandler = (e) => {
+const submitHandler = async (e) => {
   e.preventDefault()
-  axios.post("https://ramani-app.herokuapp.com/addAPI",{
+  
+  await axios.post("http://localhost:3001/addAPI",{
     name : API.name,
     endpoint : API.endpoint,
     description : API.description,
   })
    navgtq('../pages/dashLoggedIn/DashIn')
 }
-
-  return (
-    
-   
-
-
-
-
+console.log(API)
+return (
+ 
+  
   <div className='newClass'>
+    
     <div className='backPic'>
     <DashIn/>
     </div>
@@ -52,22 +52,29 @@ const submitHandler = (e) => {
        <input type="text" onChange={(e)=>{changeHandler(e)}} name='description' value={API.description} placeholder='Description of API'></input><br/>
         <input type="submit" value="Add API" onClick={(e)=>{
           submitHandler(e)
+          
         }}></input>
       </form>
     </div>
     </div>
+    
   </div>
-
-
-
-
-
-
-
-
-
+  )
+}
+const DashAPI = ({
+ name,description
+}) => {
+  console.log({name})
+  return (
+    <div>
+      <h2>{
+      name}</h2>
+      <p>{description}</p>
+    </div>
   )
 }
 
 
 export default AddAPI
+export  {DashAPI}
+

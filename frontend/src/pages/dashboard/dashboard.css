@@ -1,12 +1,15 @@
 .dashboard {
-  margin: 0;
-  padding: 0;
+ 
   display: flex;
+  position: absolute;
+  /* margin-left: 756px; */
+
 }
 
-.form {
+.form-here {
   width: 50%;
   height: 86vh;
+  
 }
 .formInside {
   border: 1px solid rgb(128, 128, 131);

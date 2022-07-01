@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "dev": "nodemon src/index.js",
     "lint": "npx eslint src/"
   },
   "author": "",
