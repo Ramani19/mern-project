@@ -29,6 +29,6 @@ frontend
     src
         components -> create and store components here
         pages -> create and store pages here
-        utils -> create and store utilities here
+
 
 ```
