@@ -43,7 +43,7 @@ const DashSignup =() => {
     try {
       e.preventDefault();
 
-      await axios.post("http://localhost:3001/signup", {
+      await axios.post(`http://mern-ramani.heroku.com/signup`, {
           // headers: {
           //   'Access-Control-Allow-Origin': true,
           // },

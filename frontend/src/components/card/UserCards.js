@@ -5,7 +5,7 @@ import card4 from './card4.jpeg'
 
 const UserCards = () => {
     const [data, setData] = useState([])
-    useEffect(async () => { await axios.post('http://localhost:3001/findAPI', {email : localStorage.getItem('email')}).then(async (e) => {
+    useEffect(async () => { await axios.post('http://mern-ramani.heroku.com/findAPI', {email : localStorage.getItem('email')}).then(async (e) => {
       //console.log(e.data[0])
       await setData(e.data)
      
@@ -20,7 +20,7 @@ const UserCards = () => {
         {
             console.log(name)
             console.log('hi')
-        await axios.post('http://localhost:3001/delAPI', {name : name}).then((e) => {console.log(e)
+        await axios.post('http://mern-ramani.heroku.com/delAPI', {name : name}).then((e) => {console.log(e)
     //   window.location.reload(false)
     })
       }

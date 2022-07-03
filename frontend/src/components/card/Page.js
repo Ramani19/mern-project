@@ -6,9 +6,10 @@ import './card.css'
 
 const Page = () => {
   const {id} =   useParams()
+  console.log(id)
   const [page, setPage] = useState({})
   useEffect(async () => {
-    const API = await axios.post('http://localhost:3001/findSpecificAPI',{name : id})
+    const API = await axios.post('http://mern-ramani.heroku.com/findSpecificAPI',{name : id})
    const endpoint = API.data.endpoint
    try {
   const pageHere = await axios.get(endpoint)

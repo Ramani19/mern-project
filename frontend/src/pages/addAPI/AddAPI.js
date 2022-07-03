@@ -49,7 +49,7 @@ const submitHandler = async (e) => {
   try{
    if(name)
    { 
-    await axios.post('http://localhost:3001/editAPI',{
+    await axios.post('http://mern-ramani.heroku.com/editAPI',{
       newName : API.name,
       name : name,
       endpoint : API.endpoint,
@@ -61,7 +61,7 @@ const submitHandler = async (e) => {
     })
    }
    else{
-    await axios.post('http://localhost:3001/addAPI',{
+    await axios.post('http://mern-ramani.heroku.com/addAPI',{
       name : API.name,
       endpoint : API.endpoint,
       description : API.description,
