@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import './card.css'
 
 const Page = () => {
   const {id} =   useParams()
@@ -24,7 +25,7 @@ const Page = () => {
   
   return (
     
-    <div>
+    <div className='page'>
      {
       JSON.stringify(page) 
      }

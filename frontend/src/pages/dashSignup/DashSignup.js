@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import Welcome from "../../components/welcome/Welcome";
 import axios from "axios";
 import "./dashSignup.css";
 
-const DashSignup =({style, event}) => {
+const DashSignup =() => {
   const navgrt = useNavigate();
   const [userReg, setUserReg] = useState({
     userName: "",
@@ -55,7 +55,7 @@ const DashSignup =({style, event}) => {
         .then(() => {
           localStorage.setItem('email' , userReg.email)
     localStorage.setItem('password' , userReg.password)
-          navgrt("../pages/marketIn/MarketIn");
+          navgrt("../marketIn");
         
         });
     } catch (err) {
@@ -125,7 +125,9 @@ const DashSignup =({style, event}) => {
             >
               {er}
             </div>: <div className="errorColor">{userRegp}</div>}
-            <div className="register"> already have an account?<button onClick ={event}>Login</button></div>
+            <div className="register"> already have an account?<Link className="dash-login" to ="../dashboard"
+              
+            >Login</Link></div>
 
           <input type="submit" name="Signup" value="Signup"></input>
         </form>

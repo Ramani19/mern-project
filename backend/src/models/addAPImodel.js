@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
-const SignUpModels = require("./SignUpModels")
+const SignUpModels = require("./SignUpModels");
+
 const APIschema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: SignUpModels,
+    required: true,
   },
   name: {
     type: String,

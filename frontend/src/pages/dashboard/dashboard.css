@@ -1,3 +1,4 @@
+
 .dashboard {
  
   display: flex;
@@ -46,4 +47,10 @@ input[type="submit"] :hover {
 }
 .erColor {
   color: rgb(248, 52, 52);
+}
+.dash-register{
+  background: none;
+  border :none;
+  color: hsl(224, 70%, 45%);
+  text-decoration: none;
 }

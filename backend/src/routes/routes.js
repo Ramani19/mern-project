@@ -7,14 +7,16 @@ const router = express.Router();
 
 
 //user routes
-router.route("/signup", user.signup);
-router.route("/signup/login", user.login);
+router.route("/signup").post(user.signup);
+router.route("/signup/login").post(user.login);
 
 //api routes
  
-router.route("/upload",api.upload)
-router.route("/addAPI",api.addAPI)
-router.route("/findAPI",api.findAPI)
-router.route("/findSpecificAPI",api.findSpecificAPI)
+router.route("/upload").post(api.upload)
+router.route("/addAPI").post(api.addAPI)
+router.route("/findAPI").post(api.findAPI)
+router.route("/findSpecificAPI").post(api.findSpecificAPI)
+router.route("/delAPI").post(api.delAPI)
+router.route("/editAPI").post(api.editAPI)
 
 module.exports = router;

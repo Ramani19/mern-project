@@ -18,7 +18,7 @@ const BackRemove = () => {
               
               <div className='text'><h1>BACKGROUND IMAGE REMOVE</h1><p>100% automatic and free</p>
 </div>           <button className='view' onClick={() => {
-  nav("../../pages/BGremove/BGremove")
+  nav("../../BGremove")
 }}>View App</button> 
            </div>
     

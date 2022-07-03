@@ -1,15 +1,18 @@
+
 import React from 'react';
 import MarketOut from './pages/marketLogOut/MarketLogOut'
 import MarketIn from './pages/marketIn/MarketIn';
 import DashSignup from './pages/dashSignup/DashSignup';
-import DashSign from './pages/DashSign/DashSign';
+// eslint-disable-next-line no-unused-vars
+
 import Dashboard from './pages/dashboard/Dashboard';
-import DashIn from './pages/dashLoggedIn/DashIn';
+
 import AddAPI from './pages/addAPI/AddAPI';
-import Button from './components/Button/Button';
+
 import Myapis from "./pages/myapis/myapis"
 import BGremove from './pages/BGremove/BGremove'
 import Page from './components/card/Page';
+
 
 
 import {BrowserRouter as Router ,Routes,Route} from 'react-router-dom';
@@ -47,17 +50,18 @@ function App (){
         
         <Route path="/" element={<MarketOut/>}/>
         <Route path='Page/:id' element={<Page/>}/>
-        <Route path='pages/dashSignup/DashSignup' element={<DashSignup/>}/>
-        <Route path="pages/dashboard/Dashboard/" element={<Dashboard/>}/>
-        <Route path="pages/marketIn/MarketIN/" element={<MarketIn/>}/>
+        <Route path='dashSignup' element={<DashSignup/>}/>
+        <Route path="dashboard/" element={<Dashboard/>}/>
+        <Route path="marketIn" element={<MarketIn/>}/>
            
-        <Route path="pages/dashLoggedIn/DashIn" element={<DashIn/>}/>
         
-            <Route path="components/Button/Button" element={<Button/>}/>
+        
+            {/* <Route path="components/Button/Button" element={<Button/>}/> */}
 
-            <Route path="pages/addAPI/AddAPI" element={<AddAPI/>}/>
-            <Route path="pages/BGremove/BGremove" element={<BGremove/>}/>
-           <Route path='pages/DashSign/DashSign' element={<DashSign/>}/>
+            <Route path="AddAPI" element={<AddAPI/>}/>
+            <Route path="AddAPI/:name" element={<AddAPI/>}/>
+            <Route path="BGremove" element={<BGremove/>}/>
+           {/* <Route path='pages/DashSign/DashSign' element={<DashSign/>}/> */}
            <Route path='myapis' element={<Myapis/>}/>
        </Routes>
        

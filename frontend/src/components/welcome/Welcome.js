@@ -3,23 +3,14 @@ import ellipse from '../../images/Ellipse.svg'
 import './welcome.css'
 
 const Welcome = () => {
-  return (
-    
-      
-    
-      
+  return (  
     <div className='textStroke'>
      <div className='box'>
-  
-    
-      <img src={ellipse} className='stroke-logo'></img>
-      
-      
-      <h1>
+     <img src={ellipse} className='stroke-logo'></img>
+    <h1>
         Welcome to your Dashboard
       </h1>
-      
-      <p className='para'>
+     <p className='para'>
       
       Your uploaded APIs will be displayed here once you login to here
       </p>  
@@ -28,5 +19,4 @@ const Welcome = () => {
     
   )
 }
-
 export default Welcome;

@@ -1,7 +1,7 @@
 import React from 'react'
 import ViewBGremove from '../../components/viewBGremove/ViewBGremove'
 import ThreeButtons from '../../components/threeButtons/ThreeButtons'
-import Card from '../../components/card/Card'
+import DefaultCard from '../../components/card/defaultCards'
 import './marketIn.css'
 
 const MarketIn = () => {
@@ -14,7 +14,7 @@ const MarketIn = () => {
         All APIs
       </h1>
       </div>
-      <Card/>
+      <DefaultCard/>
     </div>
   )
 }

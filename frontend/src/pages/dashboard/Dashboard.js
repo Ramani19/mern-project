@@ -7,12 +7,12 @@ import Welcome from '../../components/welcome/Welcome';
 
 
 import './dashboard.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link} from 'react-router-dom';
 
 
 
 // eslint-disable-next-line no-unused-vars
-const Dashboard = ({style1,event}) => {
+const Dashboard = () => {
  let navigat = useNavigate();
  
   const [userReg, setUserReg] = useState({
@@ -40,7 +40,7 @@ const  authenticate = async (e) =>{
    }).then(() => {
     localStorage.setItem('email' , userReg.email)
     localStorage.setItem('password' , userReg.password)
-      navigat("../pages/marketIn/MarketIn")
+      navigat("../marketIn")
     
    }
   
@@ -90,7 +90,7 @@ const  authenticate = async (e) =>{
          <input type="text" name='email' placeholder='Email Address' value={userReg.email} onChange={(e)=>handleInput(e)} required ></input><br/>
          <input type="password" name="password" placeholder='Password' value = {userReg.password} onChange={(e)=>handleInput(e)} required></input><br/>
          {error && <div className = 'erColor'>{error}</div>}
-        <div> not a user?<button onClick={event}>Register</button></div>
+        <div> not a user?<Link className='dash-register' to='../marketIn'>Register</Link></div>
          <input type="submit" name="Login" value="login" ></input>
 
          

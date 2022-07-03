@@ -38,4 +38,47 @@ const signup = async (request, response) => {
       }
     };
 
+   const login = (request, response) => {
+      console.log(request.body)
+        const {email,password} = request.body;
+        console.log( request.body)
+          userModel.findOne({email},async function(err, found ){
+            console.log(err)
+            
+            console.log(password)
+          
+            if(!err){
+                  if(!found)
+                  {
+              console.log('hi')
+              response.status(401).json({message :'user is not registered'})
+                  }
+                  else{
+                    console.log(found)
+              //const compare= await bcrypt.compare(password,found.password)
+              //console.log(compare)
+                  if(password!=found.password)
+                   {
+                    response.status(403).json({message:'incorrect password'})
+                   }
+                   else{
+                    response.status(200).json(found)
+                   }
+                  }
+      
+               
+          }
+          
+          else{
+           console.log(err)
+          }  
+            })
+         
+         
+         
+          
+          }
+      
+
     module.exports.signup= signup
+    module.exports.login= login

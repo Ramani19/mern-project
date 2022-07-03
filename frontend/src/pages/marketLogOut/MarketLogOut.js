@@ -3,7 +3,7 @@ import React from 'react'
 import  Button from '../../components/Button/Button'
 import "./marketLogOut.css"
 import ViewBGremove from '../../components/viewBGremove/ViewBGremove'
-import Cards from '../../components/card/Card'
+import DefaultCard from '../../components/card/defaultCards'
 
 const MarketLogOut = () => {
     
@@ -13,8 +13,8 @@ const MarketLogOut = () => {
     <div className='marketOut'>
 
       <div className='allButtons'>
-        <Button name='Login' path="../pages/dashboard/Dashboard"/>
-        <Button name='Signup' path="../pages/DashSignup/DashSignup"/>
+        <Button name='Login' path="dashboard"/>
+        <Button name='Signup' path="dashSignup"/>
           </div>
           <div>
       <ViewBGremove/>
@@ -23,7 +23,7 @@ const MarketLogOut = () => {
         All APIs
       </h1>
       <div>
-      <Cards/>
+      <DefaultCard/>
       </div>
        
     </div>

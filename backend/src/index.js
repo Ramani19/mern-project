@@ -17,7 +17,7 @@ const routes = require("./routes/routes")
 
 const bodyParser = require("body-parser");
 dotenv.config();
-app.use('/', routes)
+
 app.use(express.json());
 const corsOptions ={
   origin:'*', 
@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //httpServer.on(`listening on port ${httpServer.address.port}`);
 mongoose
-  .connect(process.env.MONGODB_URL)
+  .connect(process.env.MONGODB_URL )
   .then(() => {
     console.log("mongodb has started");
   })
@@ -37,10 +37,10 @@ mongoose
     console.log("error connecting to the database" + err);
   })
 
-
+  app.use('/', routes)
 
 app.listen(process.env.PORT, () => {
-  console.log("Backend server has started at " + process.env.PORT);
+  console.log("Backend server has started at " + process.env.PORT || 3001);
  
 });
 
