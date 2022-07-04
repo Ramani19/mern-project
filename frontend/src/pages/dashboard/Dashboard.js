@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import axios from 'axios'
 import Welcome from '../../components/welcome/Welcome';
 
@@ -12,8 +13,9 @@ import { useNavigate ,Link} from 'react-router-dom';
 
 
 // eslint-disable-next-line no-unused-vars
-const Dashboard = () => {
+const Dashboard = ({setLoading}) => {
  let navigat = useNavigate();
+ 
  
   const [userReg, setUserReg] = useState({
     email : "",
@@ -32,6 +34,11 @@ const Dashboard = () => {
     setUserReg({ ...userReg, [name]: value });
   }
 const  authenticate = async (e) =>{
+
+  
+    setLoading(true)
+  
+  
   try{
   e.preventDefault();
    await axios.post("https://mern-app-r.herokuapp.com/signup/login" , {
@@ -40,12 +47,14 @@ const  authenticate = async (e) =>{
    }).then(() => {
     localStorage.setItem('email' , userReg.email)
     localStorage.setItem('password' , userReg.password)
+    setLoading(false)
       navigat("../marketIn")
     
    }
   
   )}
   catch(err) {
+    setLoading(false)
      if(err.response && err.response.status >= 400 && err.response.status <= 500)
        {
          setError(err.response.data.message)

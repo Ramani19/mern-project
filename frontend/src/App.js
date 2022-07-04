@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React,{ useState} from 'react';
 import MarketOut from './pages/marketLogOut/MarketLogOut'
 import MarketIn from './pages/marketIn/MarketIn';
 import DashSignup from './pages/dashSignup/DashSignup';
@@ -20,7 +20,8 @@ import {BrowserRouter as Router ,Routes,Route} from 'react-router-dom';
 import './App.css'
 
 function App (){
-
+  const [loading, setLoading] = useState(false)
+ 
   
 
   return (
@@ -31,6 +32,7 @@ function App (){
       
       <Router>
       <div className="App">
+        {loading ? <div className='loading'></div>: <></>}
       <span>  
 <nav className='Cuvette-logo'>
 
@@ -51,7 +53,7 @@ function App (){
         <Route path="/" element={<MarketOut/>}/>
         <Route path='Page/:id' element={<Page/>}/>
         <Route path='dashSignup' element={<DashSignup/>}/>
-        <Route path="dashboard/" element={<Dashboard/>}/>
+        <Route path="dashboard/" element={<Dashboard setLoading={setLoading}/>}/>
         <Route path="marketIn" element={<MarketIn/>}/>
            
         
@@ -60,7 +62,7 @@ function App (){
 
             <Route path="AddAPI" element={<AddAPI/>}/>
             <Route path="AddAPI/:name" element={<AddAPI/>}/>
-            <Route path="BGremove" element={<BGremove/>}/>
+            <Route path="BGremove" element={<BGremove setLoading={setLoading}/>}/>
            {/* <Route path='pages/DashSign/DashSign' element={<DashSign/>}/> */}
            <Route path='myapis' element={<Myapis/>}/>
        </Routes>

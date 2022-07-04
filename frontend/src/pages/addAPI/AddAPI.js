@@ -8,9 +8,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import './addAPI.css'
 
 
-const AddAPI = () => {
+const AddAPI = ({setLoading}) => {
       const {name} =useParams()
-      let url
+      
       const[err, setErr] = useState() 
       const [API,setAPI] = useState({
         name : "",
@@ -46,6 +46,7 @@ console.log(API)
 
 const submitHandler = async (e) => {
   e.preventDefault()
+  setLoading(true)
   try{
    if(name)
    { 
@@ -57,36 +58,34 @@ const submitHandler = async (e) => {
       email : localStorage.getItem('email')
     }).then((e)=>{
       console.log(e)
+      setLoading(false)
       navgtq('../myapis')
+    }).catch(()=>{
+      setLoading(false)
     })
    }
    else{
-    await axios.post('/addAPI',{
+    await axios.post('https://mern-app-r.herokuapp.com/addAPI',{
       name : API.name,
       endpoint : API.endpoint,
       description : API.description,
       email : localStorage.getItem('email')
     }).then((e)=>{
       console.log(e)
+      setLoading(false)
       navgtq('../myapis')
     })
-   }
+   
 
- await axios.post(url,{
-    name : API.name,
-    newName : name,
-    endpoint : API.endpoint,
-    description : API.description,
-    email : localStorage.getItem('email')
-  }).then((e)=>{
-    console.log(e)
-    navgtq('../myapis')
-  })
+ 
 
   }
+}
   catch(err){
     const error = err.response.data.message
+    setLoading(false)
     setErr(error)
+    
   }
   //navgtq('../myapis')
 

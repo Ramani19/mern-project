@@ -20,7 +20,7 @@ const upload = (req, res) => {
     //responseType: "arraybuffer",
     headers: {
       ...formDa.getHeaders(),
-      "X-Api-Key": "oRRJw46re7o5kvZsTRP7UiD1",
+      "X-Api-Key": "PcEvuQqNZU8ro3GcwpHL11zw",
       Accept: "application/json",
     },
     encoding: null,

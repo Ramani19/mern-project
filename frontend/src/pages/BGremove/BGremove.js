@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
 import React, { useState, useRef, useEffect } from "react";
@@ -6,7 +7,7 @@ import axios from "axios";
 import card1 from "../../images/card1.svg";
 import upload from "../../images/upload.svg";
 
-const BGremove = () => {
+const BGremove = ({setLoading}) => {
   const [img, setImg] = useState(null);
   const [prev, setPrev] = useState(null);
   const [base64, setBase64] = useState();
@@ -29,6 +30,8 @@ const BGremove = () => {
   const formData = new FormData();
 
   const uploadImage = async (files) => {
+    setLoading(true)
+    
     const a = await convertBase64(files);
     const imageData = a.substring(a.indexOf(",") + 1);
     formData.append("file", imageData);
@@ -44,10 +47,13 @@ const BGremove = () => {
         const x = res.data.data.result_b64;
         
         await setBack(`data:image/jpeg/png/jpg/svg;base64,${x}`);
+        setLoading(false)
         console.log(back);
 
         setPrev(null);
-      });
+      }).catch(()=>{
+        setLoading(false)
+      })
   };
 
   const convertBase64 = (files) => {
