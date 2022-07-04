@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
+  "engines" : {
+    "node" : "16.13.2",
+    "npm" : "8.3.2"
+  },
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node src/index.js",
+    
     "dev": "nodemon src/index.js",
     "lint": "npx eslint src/"
   },

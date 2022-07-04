@@ -9,7 +9,7 @@ const Page = () => {
   console.log(id)
   const [page, setPage] = useState({})
   useEffect(async () => {
-    const API = await axios.post('http://mern-ramani.heroku.com/findSpecificAPI',{name : id})
+    const API = await axios.post('https://mern-app-r.herokuapp.com/findSpecificAPI',{name : id})
    const endpoint = API.data.endpoint
    try {
   const pageHere = await axios.get(endpoint)

@@ -34,7 +34,7 @@ const Dashboard = () => {
 const  authenticate = async (e) =>{
   try{
   e.preventDefault();
-   await axios.post("http://mern-ramani.heroku.com/signup/login" , {
+   await axios.post("https://mern-app-r.herokuapp.com/signup/login" , {
     email:userReg.email,
     password:userReg.password,
    }).then(() => {

@@ -24,7 +24,7 @@ const AddAPI = () => {
    if(name)
    {
          useEffect(()=> {
-          axios.post('http://localhost:3001/findSpecificAPI',{name : name}).then((e)=> {
+          axios.post('https://mern-app-r.herokuapp.com/findSpecificAPI',{name : name}).then((e)=> {
              console.log(e)
              const name =e.data.name
              const endpoint=e.data.endpoint
@@ -49,7 +49,7 @@ const submitHandler = async (e) => {
   try{
    if(name)
    { 
-    await axios.post('http://mern-ramani.heroku.com/editAPI',{
+    await axios.post('https://mern-app-r.herokuapp.com/editAPI',{
       newName : API.name,
       name : name,
       endpoint : API.endpoint,
@@ -61,7 +61,7 @@ const submitHandler = async (e) => {
     })
    }
    else{
-    await axios.post('http://mern-ramani.heroku.com/addAPI',{
+    await axios.post('/addAPI',{
       name : API.name,
       endpoint : API.endpoint,
       description : API.description,
