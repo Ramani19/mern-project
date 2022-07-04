@@ -18,7 +18,7 @@ const path = require('path')
 const bodyParser = require("body-parser");
 dotenv.config();
 
-app.use(express.json());
+app.use(express.json({limit: 2*1024*1024}));
 const corsOptions ={
   origin:'*', 
   credentials:true,            //access-control-allow-credentials:true
