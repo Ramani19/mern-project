@@ -36,9 +36,7 @@ mongoose
   .catch((err) => {
     console.log("error connecting to the database" + err);
   })
-  app.get('/', (req, res )=> {
-    res.send('hi')
-  })
+  
 
   app.use('/', routes)
   // if(process.env.NODE_ENV === 'production'){
