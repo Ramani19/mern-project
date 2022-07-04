@@ -90,7 +90,7 @@ const  authenticate = async (e) =>{
          <input type="text" name='email' placeholder='Email Address' value={userReg.email} onChange={(e)=>handleInput(e)} required ></input><br/>
          <input type="password" name="password" placeholder='Password' value = {userReg.password} onChange={(e)=>handleInput(e)} required></input><br/>
          {error && <div className = 'erColor'>{error}</div>}
-        <div> not a user?<Link className='dash-register' to='../marketIn'>Register</Link></div>
+        <div> not a user?<Link className='dash-register' to='../dashSignup'>Register</Link></div>
          <input type="submit" name="Login" value="login" ></input>
 
          
