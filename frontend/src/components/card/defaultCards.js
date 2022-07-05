@@ -8,7 +8,7 @@ import card4 from "./card4.jpeg";
 import Cards from "./card";
 import {useNavigate } from 'react-router-dom'
 
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
 import "./card.css";
 
@@ -19,13 +19,13 @@ const DefaultCards = () => {
   return (
    
     <div className="cards default-cards">
-      <a href="../../BGremove" >
+      <Link to="../../BGremove" >
       <Cards
 
         img={card1}
         title={"Background Remover"}
         para={"Remove the background of your image"} />
-    </a>
+    </Link>
     <a href="https://www.fontspace.com">
     <Cards
         img={card2}
