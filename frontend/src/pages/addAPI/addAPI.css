@@ -1,8 +1,8 @@
 .formOut {
   position: absolute;
   margin-top: -717px;
-  padding-right: 603px;
-  padding-bottom: 409px;
+  padding-right: 604px;
+  padding-bottom: 441px;
   background-color: #566474cc;
   height: 600px;
   width: 932px;
@@ -14,7 +14,7 @@
 .formIn {
   background-color: white;
   padding: 20px 30px 100px 30px;
-  margin-left: 610px;
+  margin-left: 600px;
   margin-top: 550px;
   display: flex;
   flex-direction: column;
@@ -29,6 +29,7 @@
   background-color: #142683;
   color: white;
   border-color: #142683;
+  cursor: pointer;
 }
 .formIn p{
   

@@ -41,12 +41,18 @@ h2 {
   background-color: #142683;
   color: white;
   border: none;
+  cursor: pointer;
 }
 .para {
   font-size: 20px;
 }
 input[type="submit"] :hover {
   width: 75px;
+}
+.sign-spinner{
+  width: 70px;
+  margin-left: 90px;
+  margin-top: 18px;
 }
 .errorColor {
   /* border: 1px black solid; */

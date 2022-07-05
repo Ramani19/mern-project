@@ -7,7 +7,8 @@ import axios from "axios";
 import card1 from "../../images/card1.svg";
 import upload from "../../images/upload.svg";
 
-const BGremove = ({setLoading}) => {
+const BGremove = ({spinner}) => {
+  const [loading, setLoading] = useState()
   const [img, setImg] = useState(null);
   const [prev, setPrev] = useState(null);
   const [base64, setBase64] = useState();
@@ -88,7 +89,7 @@ const BGremove = ({setLoading}) => {
             <div className="afterPreview">
               <img src={abc} className="image" />
               <button className="bgButton" onClick={() => { setImg(null)}}>clear image</button>
-             { back && <a href={abc} className='bgButton' download= 'image.png'>download image</a> }    </div>
+             { back ? <a href={abc} className='bgButton' download= 'image.png'>download image</a>:<div>{spinner}</div> }    </div>
           ) : (
             <div className="beforePreview">
               <div className="beforeInside">
@@ -109,14 +110,14 @@ const BGremove = ({setLoading}) => {
                     uploadImage(files);
                   }}
                 />
-                <button className="bgButton"
+               {loading ? <div className="bg-spinner">{spinner}</div>: <button className="bgButton"
                   onClick={async (e) => {
                     e.preventDefault();
                     inputRef.current.click();
                   }}
                 >
                   upload
-                </button>
+                </button>}
               </div>
             </div>
           )}

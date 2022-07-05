@@ -6,8 +6,9 @@ import Welcome from "../../components/welcome/Welcome";
 import axios from "axios";
 import "./dashSignup.css";
 
-const DashSignup =() => {
+const DashSignup =({spinner}) => {
   const navgrt = useNavigate();
+  const [loading, setLoading] = useState(false)
   const [userReg, setUserReg] = useState({
     userName: "",
     email: "",
@@ -40,6 +41,7 @@ const DashSignup =() => {
  
 
   const PostDat = async (e) => {
+    setLoading(true)
     try {
       e.preventDefault();
 
@@ -55,11 +57,14 @@ const DashSignup =() => {
         .then(() => {
           localStorage.setItem('email' , userReg.email)
     localStorage.setItem('password' , userReg.password)
+     setLoading(false)
           navgrt("../marketIn");
         
         });
     } catch (err) {
+      setLoading(false)
       if (
+        
         err.response &&
         err.response.status >= 400 &&
         err.response.status <= 500
@@ -129,7 +134,7 @@ const DashSignup =() => {
               
             >Login</Link></div>
 
-          <input type="submit" name="Signup" value="Signup"></input>
+          { loading ? <div className="sign-spinner">{spinner}</div> :<input type="submit" name="Signup" value="Signup"></input>}
         </form>
       </div>
       </div>

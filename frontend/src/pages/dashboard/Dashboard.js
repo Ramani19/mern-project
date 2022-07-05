@@ -13,9 +13,9 @@ import { useNavigate ,Link} from 'react-router-dom';
 
 
 // eslint-disable-next-line no-unused-vars
-const Dashboard = ({setLoading}) => {
+const Dashboard = ({spinner}) => {
  let navigat = useNavigate();
- 
+ const [loading, setLoading] = useState(false)
  
   const [userReg, setUserReg] = useState({
     email : "",
@@ -100,7 +100,7 @@ const  authenticate = async (e) =>{
          <input type="password" name="password" placeholder='Password' value = {userReg.password} onChange={(e)=>handleInput(e)} required></input><br/>
          {error && <div className = 'erColor'>{error}</div>}
         <div> not a user?<Link className='dash-register' to='../dashSignup'>Register</Link></div>
-         <input type="submit" name="Login" value="login" ></input>
+       {loading ? <div className='spinner-dash'> {spinner} </div>: <input type="submit" name="Login" value="login" ></input> }
 
          
   

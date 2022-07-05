@@ -6,14 +6,14 @@ import ThreeButtons from '../../components/threeButtons/ThreeButtons'
 import ViewBGremove from '../../components/viewBGremove/ViewBGremove'
 import  UserCards  from '../../components/card/UserCards'
 import './myapis.css'
-const myapis = () => {
+const myapis = ({spinner}) => {
  
   return (
     <div>
       <ThreeButtons/>
       <ViewBGremove/>
       
-      <UserCards/>
+      <UserCards spinner={spinner} />
       
     </div>
   )

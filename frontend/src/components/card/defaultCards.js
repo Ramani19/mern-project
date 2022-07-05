@@ -19,7 +19,7 @@ const DefaultCards = () => {
   return (
    
     <div className="cards default-cards">
-      <a href="../../pages/BGremove/BGremove" >
+      <a href="../BGremove" >
       <Cards
 
         img={card1}

@@ -75,6 +75,7 @@
   border-radius: 3px;
   text-align: center;
   font-size: 15px;
+  cursor: pointer;
 }
 .bgButton {
   display: flex;
